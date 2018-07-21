@@ -16,7 +16,7 @@
   - HTML/CSS(Bootstrap)
   - PHP
   - SQL
-### 開発環境
+#### 開発環境
   - ubuntu
   - apache2
   - MySQL
