@@ -12,11 +12,11 @@
    - user_registration_complete.php ユーザー登録が成功した時に表示されるページです。
    - user_login.php ログインページです。
    - user_logout.php ログアウトをするページです。（ログアウトした後にログインページにリダイレクトします。）
-#### 使用言語
+### 使用言語
   - HTML/CSS(Bootstrap)
   - PHP
   - SQL
-#### 開発環境
+### 開発環境
   - ubuntu
   - apache2
   - MySQL
