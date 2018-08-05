@@ -1,0 +1,52 @@
+h2{	
+	text-align: center;
+	background: #3cb37a;
+	color: #FFF;
+	padding: 3px 0;
+}
+
+form{
+	margin: 0 auto;
+	width: 60%;
+}
+
+textarea{
+	vertical-align: top;
+}
+
+#container{
+	margin-bottom: 30px;
+}
+#wrap_map{
+	padding-top: 20px;
+}
+#map{
+	margin-top: 10px;
+}
+
+.spot{
+	margin: 0 auto;
+	padding-top: 30px;
+}
+.spot h3{
+	margin: 0;
+}
+
+#spot_append{
+	padding-top: 10px;
+	text-align: right;
+	color: white; 
+}
+#spot_append input:hover{
+	color: white;
+}
+
+#spot_del{
+	margin: 0;
+	padding: 0;
+}
+
+#del_btn{
+	width: 23%;
+	margin-top: 5px;
+}

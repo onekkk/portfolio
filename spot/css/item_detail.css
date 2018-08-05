@@ -1,0 +1,24 @@
+#content{
+	margin: 0 auto;
+	width: 65%;
+}
+
+h2{
+	text-align: center;
+	background: #3cb37a;
+	color: #FFF;
+	padding: 3px 0;
+
+}
+
+.description{
+	word-wrap: break-word;
+}
+
+.spot{
+	padding-top: 20px;
+}
+
+#map_detail{
+	margin-top: 10px;
+}
