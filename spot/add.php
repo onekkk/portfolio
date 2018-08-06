@@ -177,13 +177,14 @@ $dbh = new PDO('mysql:host=localhost;dbname=spot', 'root', 'ichimura');
 				    <label id="spot_append"><input type="button" value="スポットを追加" class="btn btn-outline-warning" onclick="spot_add();">      ※１０個まで追加できます</label><br>
 					<input type="hidden" value="3" id="count" name="count">
 				    <input type="submit" value="スポットを登録" name="add" class="float-right btn btn-success">
+					<input type="hidden" name="token" value="<?php echo generate_token()?>">
 					<input type="hidden" name="spot_hidden_4" id="spot_hidden_4" value="<?php if ($total_count >= 4) echo $spot[3]['name'].','.$spot[3]['body'].','.$spot[3]['lat'].','.$spot[3]['lng']; ?>">
-					<input type="hidden" name="spot_5" id="spot_hidden_5" value="<?php if ($total_count >= 5) echo $spot[4]['name'].','.$spot[4]['body'].','.$spot[4]['lat'].','.$spot[4]['lng']; ?>">
-					<input type="hidden" name="spot_6" value="<?php if ($total_count >= 6) echo $spot[5]['name'].','.$spot[5]['body'].','.$spot[5]['lat'].','.$spot[5]['lng']; ?>">
-					<input type="hidden" name="spot_7" value="<?php if ($total_count >= 7) echo $spot[6]['name'].','.$spot[6]['body'].','.$spot[6]['lat'].','.$spot[6]['lng']; ?>">
-					<input type="hidden" name="spot_8" value="<?php if ($total_count >= 8) echo $spot[7]['name'].','.$spot[7]['body'].','.$spot[7]['lat'].','.$spot[7]['lng']; ?>">
-					<input type="hidden" name="spot_9" value="<?php if ($total_count >= 9) echo $spot[8]['name'].','.$spot[8]['body'].','.$spot[8]['lat'].','.$spot[8]['lng']; ?>">
-					<input type="hidden" name="spot_10" value="<?php if ($total_count >= 10) echo $spot[9]['name'].','.$spot[9]['body'].','.$spot[9]['lat'].','.$spot[9]['lng']; ?>">
+					<input type="hidden" name="spot_hidden_5" id="spot_hidden_5" value="<?php if ($total_count >= 5) echo $spot[4]['name'].','.$spot[4]['body'].','.$spot[4]['lat'].','.$spot[4]['lng']; ?>">
+					<input type="hidden" name="spot_hidden_6" id="spot_hidden_6" value="<?php if ($total_count >= 6) echo $spot[5]['name'].','.$spot[5]['body'].','.$spot[5]['lat'].','.$spot[5]['lng']; ?>">
+					<input type="hidden" name="spot_hidden_7" id="spot_hidden_7" value="<?php if ($total_count >= 7) echo $spot[6]['name'].','.$spot[6]['body'].','.$spot[6]['lat'].','.$spot[6]['lng']; ?>">
+					<input type="hidden" name="spot_hidden_8" id="spot_hidden_8" value="<?php if ($total_count >= 8) echo $spot[7]['name'].','.$spot[7]['body'].','.$spot[7]['lat'].','.$spot[7]['lng']; ?>">
+					<input type="hidden" name="spot_hidden_9" id="spot_hidden_9" value="<?php if ($total_count >= 9) echo $spot[8]['name'].','.$spot[8]['body'].','.$spot[8]['lat'].','.$spot[8]['lng']; ?>">
+					<input type="hidden" name="spot_hidden_10" id="spot_hidden_10" value="<?php if ($total_count >= 10) echo $spot[9]['name'].','.$spot[9]['body'].','.$spot[9]['lat'].','.$spot[9]['lng']; ?>">
 				</form>
 			</div>
 		</div>
@@ -229,6 +230,7 @@ function spot_del(){
 		$('#spot_del').before('<label id="spot_append"><input type="button" value="スポットを追加" class="btn btn-outline-warning" onclick="spot_add();">      ※１０個まで追加できます</label><br>');
 	}
 
+	document.getElementById("count").value = total_count;
 }
 
 
@@ -246,8 +248,13 @@ if(total_count >= 4){
         	spot_hidden = spot_hidden.split(',');
         	document.getElementById('spot_name_' + i).value = spot_hidden[0];
         	document.getElementById('spot_body_' + i).value = spot_hidden[1];
-        	document.getElementById('google_map_lat_' + i).value = parseFloat(spot_hidden[2]);
-        	document.getElementById('google_map_lng_' + i).value = parseFloat(spot_hidden[3]);
+		if(!isNaN(parseFloat(spot_hidden[2]))){
+			document.getElementById('google_map_lat_' + i).value = parseFloat(spot_hidden[2]);
+		}
+		if(!isNaN(parseFloat(spot_hidden[3]))){
+                        document.getElementById('google_map_lng_' + i).value = parseFloat(spot_hidden[3]);
+                }
+	
 	}
 
 }
@@ -255,7 +262,7 @@ if(total_count >= 4){
 </script>
 <script type="text/javascript" src="js/map.js"></script>				    
 <script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=<APIキー>&callback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSEHZrMXeXRx-z0heZfwOpt4A31YtSgZE&callback=initMap">
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
