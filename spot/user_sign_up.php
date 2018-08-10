@@ -9,13 +9,18 @@ $token;
 $error_message = "";
 
 	$login_status = "";
+	$list_text = "";
         $login_list = "";
-        $add_list = "";
 
-        if(isset($_SESSION['username'])){
+        if(login_check()){
                 $login_status = $_SESSION["username"] . "でログイン中";
+		$list_text = "
+                                <a class=\"nav-link\" href=\"add.php\">スポット登録</a>
+                                <a class=\"nav-link\" href=\"user_detail.php\">ユーザー情報</a>
+                                <a class=\"nav-link\" href=\"follow_up_list.php\">フォロー一覧</a>
+                                <a class=\"nav-link\" href=\"bookmark_list.php\">お気に入り一覧</a>
+                                ";
                 $login_list = "<a class=\"nav-link\" href=\"user_logout.php\">ログアウト</a>";
-                $add_list = "<a class=\"nav-link\" href=\"add.php\">スポット登録</a>";
         }else{
                 $login_status = "未ログイン";
                 $login_list = "<a class=\"nav-link\" href=\"user_login.php\">ログイン</a>";
@@ -72,6 +77,7 @@ if (isset($_POST["sign_up"])){
 	<div class="col-md-12">
 		<header>
 			<h1>タイトル</h1>
+			<p id="login_status"><?php echo $login_status; ?></p>
 		</header><!-- /header -->
 	</div>
 </div>
@@ -79,7 +85,7 @@ if (isset($_POST["sign_up"])){
 	<div class="col-md-2">
 		<nav class="nav flex-column">
 		  	<a class="nav-link active" href="index.php">ホーム</a>
-			<?php echo $add_list; ?>
+			<?php echo $list_text; ?>
                         <?php echo $login_list; ?>
 		</nav>
 	</div>

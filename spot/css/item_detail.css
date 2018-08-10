@@ -7,7 +7,7 @@ h2{
 	text-align: center;
 	background: #3cb37a;
 	color: #FFF;
-	padding: 3px 0;
+	padding: 10px 0;
 
 }
 
@@ -21,4 +21,8 @@ h2{
 
 #map_detail{
 	margin-top: 10px;
+}
+
+#bookmark_btn{
+	margin-left: 10px;
 }

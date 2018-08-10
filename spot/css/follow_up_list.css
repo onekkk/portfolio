@@ -1,0 +1,20 @@
+h2{
+	text-align:center;
+	background-color: #3cb37a;
+	color: #fff;
+	padding: 10px 0;
+}
+
+.follow_item{
+	border-bottom:  solid 1px #000;
+	padding: 10px 0;
+}
+
+.follow_wrap{
+	width: 20%;
+	margin: 0 auto;
+}
+
+.follow_item input{
+	margin-left: 10px;
+}

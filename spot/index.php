@@ -5,20 +5,25 @@
 	$serach_text = "";
 	$login_status = "";
 	$login_list = "";
-	$add_list = "";
+	$list_text = "";
 
-	if(isset($_SESSION['username'])){
+	if(login_check()){
 		$login_status = $_SESSION["username"] . "でログイン中";
+		$list_text = "
+				<a class=\"nav-link\" href=\"add.php\">スポット登録</a>
+				<a class=\"nav-link\" href=\"user_detail.php\">ユーザー情報</a>
+				<a class=\"nav-link\" href=\"follow_up_list.php\">フォロー一覧</a>
+				<a class=\"nav-link\" href=\"bookmark_list.php\">お気に入り一覧</a>
+				";
 		$login_list = "<a class=\"nav-link\" href=\"user_logout.php\">ログアウト</a>";
-		$add_list = "<a class=\"nav-link\" href=\"add.php\">スポット登録</a>"; 
 	}else{
 		$login_status = "未ログイン";
 		$login_list = "<a class=\"nav-link\" href=\"user_login.php\">ログイン</a>";
 	}
 	$sql = "";
 	$sql_count = "";
-	if (isset($_POST["serach"])){
-		$serach_text = htmlspecialchars($_POST["serach_text"]);
+	if (isset($_GET["serach"])){
+		$serach_text = htmlspecialchars($_GET["serach_text"]);
 		$serach_text_sql = "WHERE name LIKE '%" . $serach_text . "%' OR body LIKE '%" . $serach_text . "%' ";
 		$sql = "SELECT * FROM spot_items " . $serach_text_sql . "ORDER BY id DESC";
 		$sql_count = "SELECT COUNT(*) FROM spot_items " . $serach_text_sql . "ORDER BY id DESC;";
@@ -80,13 +85,13 @@
 	<div class="col-md-2">
 		<nav class="nav flex-column">
 		  	<a class="nav-link active" href="">ホーム</a>
-			<?php echo $add_list; ?>
+			<?php echo $list_text; ?>
 			<?php echo $login_list; ?>
 		</nav>
 	</div>
 	<div class="col-md-10">
 		<div class="row">
-			<form action="" method="post" class="col-md-12">
+			<form action="" method="get" class="col-md-12">
 				<div class="input-group" id="serach_bar">
   					<input type="text" class="form-control" name="serach_text" placeholder="" value="<?php echo $serach_text;?>">
   					<div class="input-group-append">
@@ -101,20 +106,17 @@
 		$body_str .= "…";
 	}
 	$n = $i + 1;	
-	print("<div class=\"col-md-3 item \">
-				<form name=\"form" . $n . "\" method=\"post\" action=\"item_detail.php\"> 
-                                        <a href=\"javascript:form1.submit()\" title=\"\">
-                                                <h3>". $result[$i]['name']."</h3>
+	print("<div class=\" item \">
+                                        <a href=\"item_detail.php?id=" . $result[$i]['id'] . "\" title=\"\" >
+						<h3>". $result[$i]['name']."</h3>
                                                 <p class=\"item_body\">" . $body_str ."</p>
 						<p class=\"author\">作成者　" . $result[$i]['author'] . "</p>
                                         </a>
-                                        <input type=hidden name=\"id\" value=\"" . $result[$i]['id']. "\"> 
-                                </form>
                         </div>");
 }
 
 ?>
-
+		
 		<div class="col-md-12" id="page">
 			<div class="row">
 			<p class="col-md-4">

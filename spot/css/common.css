@@ -31,11 +31,13 @@ a:hover{
 }
 
 .item{
-	height: 96px;
+	width: 22%;
+	height: 30%;
 	margin: 10px;
 	padding: 0;
 	border: solid 1px #000;
 	border-radius: 5px;
+	position:relative;
 }
 .item a{
 	display: block;
@@ -66,6 +68,9 @@ a:hover{
 	padding-right: 10px;
 	font-size: 10px;
 	color: #23527c;
+	position:absolute;
+	right: 0;
+	bottom:-7px;
 }
 #login_status{
 	position:absolute;
@@ -75,7 +80,7 @@ a:hover{
 }
 
 #serach_bar{
-	width: 80%;
+	width: 95%;
 	padding-top: 20px;
 }
 

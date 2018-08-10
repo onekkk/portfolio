@@ -1,14 +1,25 @@
 <?php
         require_once('init.php');
 
-        if(isset($_SESSION['username'])){
+	$login_status = "";
+        $list_text = "";
+        $login_list = "";
+
+        $login_status = login_check();
+        if($login_status){
                 $login_status = $_SESSION["username"] . "でログイン中";
+                $list_text = "
+                                <a class=\"nav-link\" href=\"add.php\">スポット登録</a>
+                                <a class=\"nav-link\" href=\"user_detail.php\">ユーザー情報</a>
+                                <a class=\"nav-link\" href=\"follow_up_list.php\">フォロー一覧</a>
+                                <a class=\"nav-link\" href=\"bookmark_list.php\">お気に入り一覧</a>
+                                ";
                 $login_list = "<a class=\"nav-link\" href=\"user_logout.php\">ログアウト</a>";
-                $add_list = "<a class=\"nav-link\" href=\"add.php\">スポット登録</a>";
         }else{
                 $login_status = "未ログイン";
                 $login_list = "<a class=\"nav-link\" href=\"user_login.php\">ログイン</a>";
         }
+
 ?>
 
 <!DOCTYPE>
@@ -37,7 +48,7 @@
         <div class="col-md-2">
                 <nav class="nav flex-column">
 		<a class="nav-link active" href="index.php">ホーム</a>
-                        <?php echo $add_list; ?>
+                        <?php echo $list_text; ?>
                         <?php echo $login_list; ?>
                 </nav>
         </div>

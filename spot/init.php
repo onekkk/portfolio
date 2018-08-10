@@ -14,5 +14,13 @@ function token_check($token_post){
 	return false;
 }
 
+function login_check(){
+	if(isset($_SESSION['username'])){
+                return true;
+        }else{
+                return false;
+        }
+}
+
 
 
