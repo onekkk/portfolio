@@ -136,3 +136,4 @@ function map_id_set(n){
     $('#wrap_map').insertAfter(map_pos);
 
 }
+
