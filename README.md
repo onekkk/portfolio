@@ -24,6 +24,8 @@
   - javascript
   - PHP
   - SQL
+### フレームワーク
+  - Smarty
 ### 開発環境
   - ubuntu
   - apache2
